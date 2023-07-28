@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import Logo from '../assets/logo-perdePeso.png';
 import InputText from '../components/InputText';
-import { validateEmail, validateName, validatePassword } from '../validatiors/usuarios';
+import { validateEmail, validateName, validatePassword } from '../validators/usuarios';
 
 const { Content } = Layout;
 const { Title } = Typography;

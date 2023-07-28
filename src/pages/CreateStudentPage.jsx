@@ -8,8 +8,8 @@ import { useEffect, useCallback, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import InputText from '../components/InputText';
-import { validateSex } from '../validatiors/tarefas';
-import { validateEmail, validateName } from '../validatiors/usuarios';
+import { validateSex } from '../validators/tarefas';
+import { validateEmail, validateName } from '../validators/usuarios';
 
 function CreateStudentPage() {
   const { studentsId } = useParams();

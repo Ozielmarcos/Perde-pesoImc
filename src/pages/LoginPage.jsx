@@ -10,7 +10,7 @@ import axios from 'axios';
 import Logo from '../assets/logo-perdePeso.png';
 import InputText from '../components/InputText';
 import LocalStorageHelper from '../helpers/localstorage-helper';
-import { validateEmail, validatePassword } from '../validatiors/usuarios';
+import { validateEmail, validatePassword } from '../validators/usuarios';
 
 const { Content } = Layout;
 const { Title } = Typography;
