@@ -10,6 +10,7 @@ const CreateStudentPage = lazy(() => import('../pages/CreateStudentPage'));
 const ListStudents = lazy(() => import('../pages/ListStudents'));
 const AppLayout = lazy(() => import('./AppLayout'));
 
+
 function MainLayout() {
   return (
     <Suspense>

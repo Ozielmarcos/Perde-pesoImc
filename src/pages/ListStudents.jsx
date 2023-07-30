@@ -4,8 +4,7 @@ import {
 } from 'antd';
 import axios from 'axios';
 import {
-  BorderOutlined,
-  DeleteOutlined, FilePdfOutlined, FormOutlined,
+  DeleteOutlined, FormOutlined,
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
@@ -68,13 +67,28 @@ function ListaAlunos() {
 
   const styles = StyleSheet.create({
     page: {
-      flexDirection: 'row',
-      backgroundColor: '#ffffff',
+      padding: 10,
+      margin: 10,
+      width: '100%',
+      height: '100%',
     },
     section: {
-      margin: 10,
       padding: 10,
-      flexGrow: 1,
+      display: 'flex',
+    },
+    title: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      backgroundColor: '#c1c1c1',
+    },
+    par: {
+      backgroundColor: '#232323',
+      color: '#fff',
+    },
+    impar: {
+      backgroundColor: 'white',
+      color: '#000',
     },
   });
 
@@ -99,20 +113,21 @@ function ListaAlunos() {
       requestStudent();
     }, []);
   };
+
   // Function to generate PDF content
   const generatePdfContent = () => (
     <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>ID</Text>
+      <Page size="A4" style={styles.page} wrap={true}>
+        <View style={styles.section} wrap={false}>
+          <Text style={styles.title}>ID</Text>
           {alunos.map((student) => (
-            <Text key={student.id}>{student.id}</Text>
+            <Text style={styles.par} key={student.id}>{student.id}</Text>
           ))}
         </View>
         <View style={styles.section}>
-          <Text>NOME</Text>
+          <Text style={styles.title}>NOME</Text>
           {alunos.map((student) => (
-            <Text key={student.id}>{student.nome}</Text>
+            <Text style={styles.impar} key={student.id}>{student.nome}</Text>
           ))}
         </View>
         <View style={styles.section}>
@@ -163,10 +178,8 @@ function ListaAlunos() {
             <Text key={student.id}>{student.avaliacao}</Text>
           ))}
         </View>
-
-        {/* Add more columns as needed */}
       </Page>
-    </Document>
+    </Document >
   );
 
   const handlePdfDownload = () => {
@@ -276,8 +289,8 @@ function ListaAlunos() {
             </Table>
           </Col>
         </Row>
-        <Button type="primary" icon={<BorderOutlined />}>
-          <PDFDownloadLink document={generatePdfContent()} fileName="alunos.pdf">
+        <Button type="primary">
+          <PDFDownloadLink document={handlePdfDownload} fileName="alunos.pdf">
             {({ blob, url, loading, error }) => (loading ? 'Carregando...' : 'Gerar PDF')}
           </PDFDownloadLink>
         </Button>
